@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const data = [
-  { link: "", label: "Account", icon: IconUsers },
+  { link: "/account", label: "Account", icon: IconUsers },
   { link: "", label: "Product", icon: IconShoppingCart },
 ];
 
@@ -31,23 +31,24 @@ export function Navbar() {
   ));
 
   return (
-    <nav className={classes.navbar}>
-      <div className={classes.navbarMain}>
-        <div className={classes.headerContainer}>
-          <Group className={classes.header} justify="space-between">
-            <Image src={logo2} width={250} alt="Lolycones" />
-          </Group>
+    <div className={classes.body}>
+      <nav className={classes.navbar}>
+        <div className={classes.navbarMain}>
+          <div className={classes.headerContainer}>
+            <Group className={classes.header} justify="space-between">
+              <Image src={logo2} width={270} alt="Lolycones" />
+            </Group>
+          </div>
+          <div className={classes.linksContainer}>{links}</div>
         </div>
-        <div className={classes.linksContainer}>{links}
-        </div>
-      </div>
 
-      <div className={classes.footer}>
-        <Link href="/" className={classes.link}>
-          <IconLogout className={classes.linkIcon} stroke={1.5} />
-          <span>Logout</span>
-        </Link>
-      </div>
-    </nav>
+        <div className={classes.footer}>
+          <Link href="/" className={classes.link}>
+            <IconLogout className={classes.linkIcon} stroke={1.5} />
+            <span>Logout</span>
+          </Link>
+        </div>
+      </nav>
+    </div>
   );
 }
