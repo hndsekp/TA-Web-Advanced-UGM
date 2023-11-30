@@ -9,11 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/carousel": "^7.2.2",
     "@mantine/core": "^7.2.2",
     "@mantine/hooks": "^7.2.2",
     "@mantinex/mantine-logo": "^1.0.1",
     "@tabler/icons-react": "^2.42.0",
-    "next": "14.0.2",
+    "next": "^14.0.2",
     "react": "^18",
     "react-dom": "^18"
   },
