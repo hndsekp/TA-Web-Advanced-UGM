@@ -1,3 +1,4 @@
+import { Auth } from "./components/authentication";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { Hero } from "./components/hero";
@@ -5,9 +6,9 @@ import { Hero } from "./components/hero";
 export default function Home() {
   return (
       <>
-        <Header/>
-        <Hero/>
-        <Footer/>
+      <Header/>
+      <Hero/>
+      <Footer/>
       </>
   )
 }
