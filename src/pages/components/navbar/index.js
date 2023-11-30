@@ -33,17 +33,17 @@ export function Navbar() {
   return (
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
-        <Group className={classes.header} justify="space-between">
-          <Image src={logo2} width={200} alt="Lolycones" />
-        </Group>
-        {links}
+        <div className={classes.headerContainer}>
+          <Group className={classes.header} justify="space-between">
+            <Image src={logo2} width={250} alt="Lolycones" />
+          </Group>
+        </div>
+        <div className={classes.linksContainer}>{links}
+        </div>
       </div>
 
       <div className={classes.footer}>
-        <Link
-          href="/"
-          className={classes.link}
-        >
+        <Link href="/" className={classes.link}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </Link>
