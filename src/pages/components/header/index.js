@@ -1,6 +1,9 @@
-import { Group, Button, Box, Burger, useMantineTheme } from "@mantine/core";
-import { MantineLogo } from "@mantinex/mantine-logo";
+import { Group, Button, Box, useMantineTheme} from "@mantine/core";
+import Image from "next/image";
+import Link from "next/link";
+import logo3 from "../../../../public/assets/logo3.png";
 import classes from "./header.module.css";
+import { IconShoppingCart } from "@tabler/icons-react";
 
 export function Header() {
   const theme = useMantineTheme();
@@ -9,7 +12,7 @@ export function Header() {
     <Box>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
-          <MantineLogo size={30} />
+          <Image src={logo3} width={120} alt="Lolycones"/>
 
           <Group h="100%" gap={0} visibleFrom="sm">
             <a href="#" className={classes.link}>
@@ -27,8 +30,12 @@ export function Header() {
           </Group>
 
           <Group visibleFrom="sm">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Link href="/auth/login">
+            <Button>
+              <IconShoppingCart stroke={1.5}/>
+              <span>Purchase</span>
+              </Button>
+            </Link>
           </Group>
         </Group>
       </header>

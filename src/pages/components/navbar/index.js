@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Group, Code } from "@mantine/core";
+import { Group } from "@mantine/core";
 import { IconUsers, IconShoppingCart, IconLogout } from "@tabler/icons-react";
 import classes from "./navbar.module.css";
 import logo2 from "../../../../public/assets/logo2.png";
@@ -44,7 +44,7 @@ export function Navbar() {
 
         <div className={classes.footer}>
           <Link href="/" className={classes.link}>
-            <IconLogout className={classes.linkIcon} stroke={1.5} />
+            <IconLogout className={classes.linkIcon} stroke={2} />
             <span>Logout</span>
           </Link>
         </div>

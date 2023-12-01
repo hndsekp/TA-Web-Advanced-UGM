@@ -10,9 +10,10 @@ import {
   Group,
   Button,
 } from "@mantine/core";
-import classes from "./auth.module.css";
+import classes from "./login.module.css";
+import Link from "next/link";
 
-export function Auth() {
+export function Login() {
   return (
     <Container size={420} my={40}>
       <Title ta="center" className={classes.title}>
