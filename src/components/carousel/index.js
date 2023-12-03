@@ -1,7 +1,7 @@
-import { Carousel } from "@mantine/carousel"
-import { useMediaQuery } from "@mantine/hooks"
-import { Paper, Text, Title, Button, useMantineTheme, rem } from "@mantine/core"
-import classes from "./carousel.module.css"
+import { Carousel } from "@mantine/carousel";
+import { useMediaQuery } from "@mantine/hooks";
+import { Paper, Text, Title, Button, useMantineTheme, rem } from "@mantine/core";
+import classes from "./carousel.module.css";
 
 function Card({ image, title, category }) {
   return (

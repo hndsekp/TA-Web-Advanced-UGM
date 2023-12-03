@@ -35,7 +35,8 @@ export default function accountTables(){
         </Table.Tr>
     ));
     return (
-    <ScrollArea h={300} onScrollPositionChange={({ y }) => setScrolled(y !== 0)}>
+    <div className={classes.tableContainer}>
+      <ScrollArea h={300} onScrollPositionChange={({ y }) => setScrolled(y !== 0)}>
       <Table miw={700}>
         <Table.Thead className={cx(classes.header, { [classes.scrolled]: scrolled })}>
           <Table.Tr>
@@ -48,5 +49,6 @@ export default function accountTables(){
         <Table.Tbody>{rows}</Table.Tbody>
       </Table>
     </ScrollArea>
+    </div>
     );
 }

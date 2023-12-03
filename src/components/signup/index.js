@@ -1,13 +1,11 @@
 import {
   TextInput,
   PasswordInput,
-  Checkbox,
   Anchor,
   Paper,
   Title,
   Text,
   Container,
-  Group,
   Button,
 } from "@mantine/core";
 import classes from "./signup.module.css";
@@ -27,7 +25,8 @@ export function Signup() {
           label="Password"
           placeholder="Your password"
           required
-          
+          mt="md"
+
         />
         <Button className={classes.buttonsi} fullWidth mt="xl">
           Sign Up

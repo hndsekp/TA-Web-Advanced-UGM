@@ -18,13 +18,17 @@
     padding: var(--mantine-spacing-md);
     border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
   }
+  .contentContainer {
+    padding: var(--mantine-spacing-md);
+  }
   .linkContainer { 
     padding: var(--mantine-spacing-md);
   }
   .footer {
-    padding-top: var(--mantine-spacing-md);
-    margin-bottom: var(--mantine-spacing-md);
     border-top: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  }
+  .footerContainer {
+    padding: var(--mantine-spacing-md);
   }
   
   .link {
@@ -64,8 +68,4 @@
     margin-right: var(--mantine-spacing-sm);
     width: rem(25px);
     height: rem(25px);
-  }
-
-  .body {
-    float: left;
   }
