@@ -11,6 +11,7 @@ import {
   Button,
 } from "@mantine/core";
 import classes from "./signup.module.css";
+import Link from "next/link";
 
 export function Signup() {
   return (
@@ -21,7 +22,6 @@ export function Signup() {
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <TextInput label="Username" placeholder="Your Username" required/>
-        <TextInput label="Email" placeholder="Your Email" required />
         <PasswordInput
           
           label="Password"
@@ -34,9 +34,11 @@ export function Signup() {
         </Button>
         <Text c="dimmed" size="sm" ta="center" mt={5}>
           Already have an account?{" "}
+          <Link href="/auth/login">
           <Anchor  size="sm" ta="center" component="button">
             Sign In 
           </Anchor>
+          </Link>
         </Text>
       </Paper>
     </Container>

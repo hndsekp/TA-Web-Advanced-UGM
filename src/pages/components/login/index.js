@@ -21,7 +21,7 @@ export function Login() {
       </Title>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput label="Email / Username" placeholder="Your Email / Username" required />
+        <TextInput label="Username" placeholder="Your Username" required />
         <PasswordInput
           label="Password"
           placeholder="Your password"
@@ -39,9 +39,11 @@ export function Login() {
         </Button>
         <Text c="dimmed" size="sm" ta="center" mt={5}>
           Don't have an account?{" "}
-          <Anchor className={classes.createsi} size="sm" ta="center" component="button">
-            Create account
-          </Anchor>
+          <Link href="/auth/signup">
+            <Anchor className={classes.createsi} size="sm" ta="center" component="button">
+              Create account
+            </Anchor>
+          </Link>
         </Text>
         
       </Paper>
