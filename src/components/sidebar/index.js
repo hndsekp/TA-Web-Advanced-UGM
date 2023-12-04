@@ -7,11 +7,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 const data = [
-  { link: "", label: "Account", icon: IconUsers },
-  { link: "", label: "Product", icon: IconShoppingCart },
+  { link: "/dashboard/account", label: "Account", icon: IconUsers },
+  { link: "/dashboard/product", label: "Product", icon: IconShoppingCart },
 ];
 
-export function Sidebar({ children }) {
+export function Sidebar() {
   const [active, setActive] = useState("Billing");
 
   const links = data.map((item) => (
@@ -21,7 +21,6 @@ export function Sidebar({ children }) {
       href={item.link}
       key={item.label}
       onClick={(event) => {
-        event.preventDefault();
         setActive(item.label);
       }}
     >
