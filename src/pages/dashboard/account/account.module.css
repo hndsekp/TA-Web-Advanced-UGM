@@ -4,7 +4,8 @@
 .header {
     position: sticky;
     top: 0;
-    background-color: var(--mantine-color-body);
+    background-color: #b4e4ff;
+    color: white;
     transition: box-shadow 150ms ease;
   
     &::after {

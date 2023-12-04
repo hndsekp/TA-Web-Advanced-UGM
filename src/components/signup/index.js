@@ -13,6 +13,7 @@ import Link from "next/link";
 
 export function Signup() {
   return (
+    <div className={classes.container}>
     <Container size={420} my={40}>
       <Title ta="center" className={classes.title}>
         Welcome to Lolycones!
@@ -41,5 +42,6 @@ export function Signup() {
         </Text>
       </Paper>
     </Container>
+    </div>
   );
 }

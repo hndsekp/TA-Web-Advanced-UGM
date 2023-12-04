@@ -15,9 +15,10 @@ import Link from "next/link";
 
 export function Login() {
   return (
+    <div className={classes.container}>
     <Container size={420} my={40}>
       <Title ta="center" className={classes.title}>
-        Welcome to Lolycones!
+        Welcome to Lolycones
       </Title>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
@@ -30,9 +31,6 @@ export function Login() {
         />
         <Group justify="space-between" mt="lg">
           <Checkbox label="Remember me" />
-          <Anchor component="button" size="sm">
-            Forgot password?
-          </Anchor>
         </Group>
         <Button className={classes.buttonsi} fullWidth mt="xl">
           Sign in
@@ -48,5 +46,6 @@ export function Login() {
         
       </Paper>
     </Container>
+    </div>
   );
 }

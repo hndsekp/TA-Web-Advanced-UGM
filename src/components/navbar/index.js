@@ -22,7 +22,7 @@ export function Navbar() {
               Products
             </a>
             <a href="#" className={classes.link}>
-              Outlets
+              Flavors
             </a>
             <a href="#" className={classes.link}>
               About Us
