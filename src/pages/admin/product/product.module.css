@@ -1,5 +1,11 @@
-.tableContainer {
-  padding: 10px;
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addButton {
+  margin-left: auto;
 }
 .header {
     position: sticky;
@@ -18,7 +24,22 @@
         light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-3));
     }
   }
-  
+  .body {
+    background-color: #f2f2f2;
+  }
+  .productImage {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 5px;
+  }
+  .actionContainer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .deleteButton {
+    background-color: red;
+  }
   .scrolled {
     box-shadow: var(--mantine-shadow-sm);
   }

@@ -7,8 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const data = [
-  { link: "/dashboard/account", label: "Account", icon: IconUsers },
-  { link: "/dashboard/product", label: "Product", icon: IconShoppingCart },
+  { link: "/admin/account", label: "Account", icon: IconUsers },
+  { link: "/admin/product", label: "Product", icon: IconShoppingCart },
 ];
 
 export function Sidebar() {
