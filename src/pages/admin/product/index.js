@@ -1,46 +1,37 @@
 import cx from "clsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, ScrollArea, Table } from "@mantine/core";
 import classes from "./product.module.css";
 import { DashboardLayout } from "@/layouts/dashboard";
 import { IconPlus, IconEdit, IconTrash } from "@tabler/icons-react";
 import Link from "next/link";
 
-const data = [
-  {
-    id: "1",
-    image: "/assets/flavors/vanilla.png",
-    product: "Ice Cream 1",
-    detail: "lorem ipsum dolor sit amet",
-    price: "$10",
-  },
-  {
-    id: "2",
-    image: "/assets/flavors/chocolate.png",
-    product: "Ice Cream 2",
-    detail: "lorem ipsum dolor sit amet",
-    price: "$10",
-  },
-  {
-    id: "3",
-    image: "/assets/flavors/bubble_gum.png",
-    product: "Ice Cream 3",
-    detail: "lorem ipsum dolor sit amet",
-    price: "$10",
-  },
-];
-
 export default function Product() {
   const [scrolled, setScrolled] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/products');
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
+
   const rows = data.map((row) => (
     <Table.Tr key={row.id}>
       <Table.Td>{row.id}</Table.Td>
       <Table.Td>
-          <img src={row.image} alt={`Product ${row.product}`} className={classes.productImage}/>
+          <img src={row.product_image} alt={`Product ${row.product_name}`} className={classes.productImage}/>
       </Table.Td>
-      <Table.Td>{row.product}</Table.Td>
-      <Table.Td>{row.detail}</Table.Td>
-      <Table.Td>{row.price}</Table.Td>
+      <Table.Td>{row.product_name}</Table.Td>
+      <Table.Td>{row.product_detail}</Table.Td>
+      <Table.Td>{row.product_price}<span> $</span></Table.Td>
       <Table.Td className={classes.actionContainer}>
       <Link href={""}>
           <Button className={classes.editButton}>
@@ -59,7 +50,7 @@ export default function Product() {
     <>
       <div className={classes.titleContainer}>
         <h2>Product</h2>
-        <Link href={""}>
+        <Link href={"/admin/product/add"}>
         <Button className={classes.addButton}>
           <IconPlus stroke={2}/>
           Add Product  
