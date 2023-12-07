@@ -1,0 +1,36 @@
+.item {
+
+}
+
+.cardContainer {
+  height: 220px;
+  width: 140px;
+  margin: 0 auto;
+}
+.card {
+
+  border-radius: 50%;
+  overflow: hidden; /* Ensures content inside the Paper does not overflow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%; /* Make the image fill the entire Paper */
+  height: 100%; /* Make the image fill the entire Paper */
+  object-fit: cover; /* Ensure the image covers the entire area */
+  border-radius: 50%; /* Make the image circular */
+}
+
+
+.name {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.teks{
+  font-size: 50px;
+  margin-top: 10px;
+  text-align: center;
+}
