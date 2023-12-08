@@ -53,7 +53,7 @@ export default function Account() {
       <div className={classes.titleContainer}>
         <h2>Account</h2>
         <Button
-          onClick={() => router.push("/admin/product/add")}
+          onClick={() => router.push("/admin/account/add")}
           className={classes.addButton}
         >
           <IconPlus stroke={2} />

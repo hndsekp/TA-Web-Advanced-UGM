@@ -12,7 +12,7 @@ import { IconCurrencyDollar } from "@tabler/icons-react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function Add() {
+export default function AddProduct() {
   const [base64Image, setBase64Image] = useState("");
   const router = useRouter();
   const icon = (
@@ -109,6 +109,6 @@ export default function Add() {
   );
 }
 
-Add.getLayout = function getLayout(page) {
+AddProduct.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
