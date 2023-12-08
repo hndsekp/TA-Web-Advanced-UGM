@@ -36,7 +36,7 @@ export function Login() {
           Sign in
         </Button>
         <Text c="dimmed" size="sm" ta="center" mt={5}>
-          Don't have an account?{" "}
+        {"Don't have an account? "}
           <Link href="/auth/signup">
             <Anchor className={classes.createsi} size="sm" ta="center" component="button">
               Create account
