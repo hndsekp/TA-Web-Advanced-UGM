@@ -5,35 +5,21 @@ import { DashboardLayout } from "@/layouts/dashboard";
 import { IconPlus, IconEdit, IconTrash } from "@tabler/icons-react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const data = [
-  {
-    id: "1",
-    product_image: "/assets/flavors/cookies.png",
-    product_name: "Product 1",
-    product_detail: "Detail Product 1",
-    product_price: "1.11",
-  },
-  {
-    id: "2",
-    product_image: "/assets/flavors/vanilla.png",
-    product_name: "Product 2",
-    product_detail: "Detail Product 2",
-    product_price: "2.22",
-  },
-  {
-    id: "3",
-    product_image: "/assets/flavors/mint.png",
-    product_name: "Product 3",
-    product_detail: "Detail Product 3",
-    product_price: "3.33",
-  },
-];
+
 
 export default function Product() {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
+  const [data, setProductData] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/products")
+      .then((response) => response.json())
+      .then((data) => setProductData(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
   const rows = data.map((row) => (
     <Table.Tr key={row.id}>
