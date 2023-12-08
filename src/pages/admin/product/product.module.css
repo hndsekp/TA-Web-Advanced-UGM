@@ -13,6 +13,7 @@
     background-color: #b4e4ff;
     color: white;
     transition: box-shadow 150ms ease;
+    z-index: 2;
   
     &::after {
       content: '';
@@ -26,6 +27,7 @@
   }
   .body {
     background-color: #f2f2f2;
+    z-index: 1;
   }
   .productImage {
     max-width: 100px;

@@ -1,36 +1,46 @@
 import cx from "clsx";
-import { useState, useEffect } from "react";
 import { Button, ScrollArea, Table } from "@mantine/core";
 import classes from "./product.module.css";
 import { DashboardLayout } from "@/layouts/dashboard";
 import { IconPlus, IconEdit, IconTrash } from "@tabler/icons-react";
-import { useRouter } from "next/router";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState } from "react";
+
+const data = [
+  {
+    id: "1",
+    product_image: "/assets/flavors/cookies.png",
+    product_name: "Product 1",
+    product_detail: "Detail Product 1",
+    product_price: "1.11",
+  },
+  {
+    id: "2",
+    product_image: "/assets/flavors/vanilla.png",
+    product_name: "Product 2",
+    product_detail: "Detail Product 2",
+    product_price: "2.22",
+  },
+  {
+    id: "3",
+    product_image: "/assets/flavors/mint.png",
+    product_name: "Product 3",
+    product_detail: "Detail Product 3",
+    product_price: "3.33",
+  },
+];
 
 export default function Product() {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/products");
-        const result = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, []);
 
   const rows = data.map((row) => (
     <Table.Tr key={row.id}>
       <Table.Td>{row.id}</Table.Td>
       <Table.Td>
         <Image
-          src={`data:image/png;base64,${row.product_image}`}
+          src={`${row.product_image}`}
           alt={`Product ${row.product_name}`}
           className={classes.productImage}
           width={100}
@@ -69,10 +79,10 @@ export default function Product() {
       </div>
       <div className={classes.tableContainer}>
         <ScrollArea
-          h={300}
+          h="550"
           onScrollPositionChange={({ y }) => setScrolled(y !== 0)}
         >
-          <Table miw={700}>
+          <Table h="100%" miw={700}>
             <Table.Thead
               className={cx(classes.header, { [classes.scrolled]: scrolled })}
             >

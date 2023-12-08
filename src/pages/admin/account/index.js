@@ -1,10 +1,10 @@
 import cx from "clsx";
-import { useState } from "react";
 import { Button, ScrollArea, Table } from "@mantine/core";
 import classes from "./account.module.css";
 import { DashboardLayout } from "@/layouts/dashboard";
 import { IconPlus, IconEdit, IconTrash } from "@tabler/icons-react";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const data = [
   {
@@ -62,10 +62,10 @@ export default function Account() {
       </div>
       <div className={classes.tableContainer}>
         <ScrollArea
-          h={300}
+          h="550"
           onScrollPositionChange={({ y }) => setScrolled(y !== 0)}
         >
-          <Table miw={700}>
+          <Table h="100%" miw={700}>
             <Table.Thead
               className={cx(classes.header, { [classes.scrolled]: scrolled })}
             >
