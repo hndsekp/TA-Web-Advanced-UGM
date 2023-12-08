@@ -15,7 +15,7 @@ export function Sidebar() {
   const [active, setActive] = useState("Billing");
 
   const links = data.map((item) => (
-    <a
+    <Link
       className={classes.link}
       data-active={item.label === active || undefined}
       href={item.link}
@@ -26,7 +26,7 @@ export function Sidebar() {
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />
       <span>{item.label}</span>
-    </a>
+    </Link>
   ));
 
   return (
