@@ -4,7 +4,7 @@ import { Button, ScrollArea, Table } from "@mantine/core";
 import classes from "./account.module.css";
 import { DashboardLayout } from "@/layouts/dashboard";
 import { IconPlus, IconEdit, IconTrash } from "@tabler/icons-react";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 const data = [
   {
@@ -28,6 +28,7 @@ const data = [
 ];
 
 export default function Account() {
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const rows = data.map((row) => (
     <Table.Tr key={row.id}>
@@ -35,17 +36,15 @@ export default function Account() {
       <Table.Td>{row.username}</Table.Td>
       <Table.Td>{row.password}</Table.Td>
       <Table.Td>{row.role}</Table.Td>
-      <Table.Td className={classes.actionContainer}>
-        <Link href={""}>
+      <Table.Td>
+        <div className={classes.actionContainer}>
           <Button className={classes.editButton}>
             <IconEdit size={18} />
           </Button>
-        </Link>
-        <Link href={""}>
           <Button className={classes.deleteButton}>
             <IconTrash size={18} />
           </Button>
-        </Link>
+        </div>
       </Table.Td>
     </Table.Tr>
   ));
@@ -53,12 +52,13 @@ export default function Account() {
     <>
       <div className={classes.titleContainer}>
         <h2>Account</h2>
-        <Link href={""}>
-          <Button className={classes.addButton}>
-            <IconPlus stroke={2} />
-            Add Account
-          </Button>
-        </Link>
+        <Button
+          onClick={() => router.push("/admin/product/add")}
+          className={classes.addButton}
+        >
+          <IconPlus stroke={2} />
+          Add Account
+        </Button>
       </div>
       <div className={classes.tableContainer}>
         <ScrollArea

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   FileInput,
   TextInput,
@@ -10,78 +9,89 @@ import {
 } from "@mantine/core";
 import { DashboardLayout } from "@/layouts/dashboard";
 import { IconCurrencyDollar } from "@tabler/icons-react";
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function Add() {
+  const [base64Image, setBase64Image] = useState("");
+  const router = useRouter();
   const icon = (
     <IconCurrencyDollar
       style={{ width: rem(20), height: rem(20) }}
       stroke={1.5}
     />
   );
-  const [formData, setFormData] = useState({
-    product_image: null,
-    product_name: "",
-    product_detail: "",
-    product_price: 0,
-  });
-
-  const handleInputChange = (key, value) => {
-    setFormData((prevData) => ({ ...prevData, [key]: value }));
+  /*const handleFileChange = (event) => {
+    if (
+      event.currentTarget &&
+      event.currentTarget.files &&
+      event.currentTarget.files.length > 0
+    ) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(event.currentTarget.files[0]);
+      fileReader.onload = () => {
+        setBase64Image(fileReader.result);
+      };
+    }
   };
-
-  const handleFileChange = (files) => {
-    const file = files[0];
-    setFormData((prevData) => ({ ...prevData, product_image: file }));
-  };
-
   const handleInputProduct = async () => {
+    const productName = document.getElementById("productNameInput").value;
+    const productDetail = document.getElementById("productDetailInput").value;
+    const productPrice = document.getElementById("productPriceInput").value;
+
+    const formData = new FormData();
+    formData.append("productName", productName);
+    formData.append("productDetail", productDetail);
+    formData.append("productPrice", productPrice);
+    formData.append("productImage", base64Image);
+    
     try {
       const response = await fetch("/api/products/add", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: formData,
       });
 
       if (response.ok) {
-        console.log("Product added successfully");
+        router.push("/admin/product");
       } else {
-        console.error("Error adding product:", response.statusText);
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const errorData = await response.json();
+          console.error("Upload failed:", errorData.message);
+        } else {
+          console.error("Upload failed with status:", response.status);
+        }
       }
     } catch (error) {
-      console.error("Error adding product:", error.message);
+      console.error("Fetch error:", error.message);
     }
-  };
-
+  };*/
   return (
     <>
       <Box maw={340} mx="auto">
         <h1>Add Product</h1>
         <Box maw={340}>
           <FileInput
+            accept="image/jpg, image/jpeg, image/png"
+            id="productImageInput"
             label="Product Image"
             placeholder="Click to input image"
-            onChange={(files) => handleFileChange(files)}
+            multiple={false}
           />
           <TextInput
+            id="productNameInput"
             mt="md"
             label="Product Name"
             placeholder="Product Name"
-            onChange={(event) =>
-              handleInputChange("product_name", event.target.value)
-            }
           />
           <Textarea
+            id="productDetailInput"
             mt="md"
             label="Product Detail"
             placeholder="Product Detail"
-            onChange={(event) =>
-              handleInputChange("product_detail", event.target.value)
-            }
           />
           <NumberInput
+            id="productPriceInput"
             rightSection={icon}
             mt="md"
             label="Product Price"
@@ -89,14 +99,11 @@ export default function Add() {
             decimalScale={2}
             fixedDecimalScale
             defaultValue={5.5}
-            onChange={(value) => handleInputChange("product_price", value)}
           />
         </Box>
-        <Link href={"/admin/product"}>
-          <Button mt="xl" variant="filled" onClick={handleInputProduct}>
-            Input Product
-          </Button>
-        </Link>
+        <Button mt="xl" variant="filled">
+          Input Product
+        </Button>
       </Box>
     </>
   );

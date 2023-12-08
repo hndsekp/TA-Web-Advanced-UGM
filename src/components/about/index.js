@@ -21,7 +21,7 @@ export function About() {
             yang lezat.
           </Text>
         </div>
-        <Image src={image.src} className={classes.image} />
+        <Image src={image.src} alt="gambar" className={classes.image} />
       </div>
     </Container>
   );
