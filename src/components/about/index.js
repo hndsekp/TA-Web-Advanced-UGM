@@ -1,9 +1,4 @@
-import {
-  Image,
-  Container,
-  Title,
-  Text,
-} from "@mantine/core";
+import { Image, Container, Title, Text } from "@mantine/core";
 import image from "../../../public/assets/makan.png";
 import classes from "./about.module.css";
 
@@ -14,14 +9,12 @@ export function About() {
         <div className={classes.content}>
           <Title className={classes.title}>Get to Know Us</Title>
           <Text c="dimmed" mt="md">
-            Eskrim adalah sejuta rasa dalam setiap gigitan, dengan kombinasi
-            lembutnya es krim dan beragam topping yang memikat, menyajikan
-            kenikmatan di setiap sendoknya. Pilihan sempurna untuk memanjakan
-            lidah dan menghadirkan kebahagiaan melalui tiap sentuhan es krim
-            yang lezat.
+            The name Lolycones was a joke made by Aditya and Ranu when they
+            wanted to create a name for the UGM TA Education and Training
+            project.
           </Text>
         </div>
-        <Image src={image.src} alt="gambar" className={classes.image} />
+        <Image src={image.src} className={classes.image} />
       </div>
     </Container>
   );
