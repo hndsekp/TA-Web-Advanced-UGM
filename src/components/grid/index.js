@@ -94,7 +94,8 @@ export default function Rasa() {
             <Card image={item.image} name={item.name} />
           </Grid.Col>
         ))}
-      </Grid><Grid justify="center" align="center">
+      </Grid>
+      <Grid justify="center" align="center">
         {data3.map((item, index) => (
           <Grid.Col
             key={index}

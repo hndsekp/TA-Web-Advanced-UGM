@@ -1,0 +1,57 @@
+.cardContainer {
+  margin: 10px;
+  width: 700px; /* Sesuaikan dengan lebar yang diinginkan */
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Menempatkan elemen secara merata */
+  padding: 10px;
+}
+
+.contentContainer {
+  display: flex;
+  align-items: center;
+}
+
+.image {
+  width: 80px; /* Sesuaikan dengan ukuran yang diinginkan */
+  height: 80px; /* Sesuaikan dengan ukuran yang diinginkan */
+  margin-right: 10px;
+}
+
+.textContainer {
+  flex-grow: 1;
+}
+
+.name {
+  font-weight: 700;
+}
+
+.detail {
+  font-size: 14px;
+}
+
+.harga {
+  font-weight: 700;
+  color: #007bff; /* Ganti dengan warna yang diinginkan */
+}
+
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.priceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.priceLabel {
+  font-weight: 600;
+  font-size: 14px;
+  color: #6c757d; /* Ganti dengan warna yang diinginkan */
+}
