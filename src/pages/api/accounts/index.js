@@ -5,10 +5,10 @@ const prisma = new PrismaClient();
 export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
-      const products = await prisma.product.findMany();
-      res.status(200).json(products);
+      const accounts = await prisma.account.findMany();
+      res.status(200).json(accounts);
     } catch (error) {
-      res.status(500).json({ error: 'Unable to fetch products' });
+      res.status(500).json({ error: 'Unable to fetch accounts' });
     }
   } else {
     res.setHeader('Allow', ['GET']);

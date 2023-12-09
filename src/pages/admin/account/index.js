@@ -1,41 +1,39 @@
-import cx from "clsx";
-import { Button, ScrollArea, Table } from "@mantine/core";
 import classes from "./account.module.css";
+import cx from "clsx";
+import { useEffect, useState } from "react";
+import { Button, ScrollArea, Table, Modal } from "@mantine/core";
 import { DashboardLayout } from "@/layouts/dashboard";
 import { IconPlus, IconEdit, IconTrash } from "@tabler/icons-react";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { useDisclosure } from "@mantine/hooks";
+import AddAccount from "./add";
+import { PrismaClient } from "@prisma/client";
 
-const data = [
-  {
-    id: "1",
-    username: "admin",
-    password: "admin",
-    role: "admin",
-  },
-  {
-    id: "2",
-    username: "ranu",
-    password: "sayasehat12",
-    role: "customer",
-  },
-  {
-    id: "3",
-    username: "raph",
-    password: "raphaelzelig00",
-    role: "customer",
-  },
-];
-
-export default function Account() {
-  const router = useRouter();
+const Account = () => {
+  const [accounts, setAccounts] = useState([]);
   const [scrolled, setScrolled] = useState(false);
-  const rows = data.map((row) => (
-    <Table.Tr key={row.id}>
-      <Table.Td>{row.id}</Table.Td>
-      <Table.Td>{row.username}</Table.Td>
-      <Table.Td>{row.password}</Table.Td>
-      <Table.Td>{row.role}</Table.Td>
+  const [opened, { open, close }] = useDisclosure(false);
+
+  const fetchAccounts = async () => {
+    const response = await fetch('/api/accounts');
+    const data = await response.json();
+    setAccounts(data);
+  };
+
+  useEffect(() => {
+    fetchAccounts();
+  }, []);
+
+  const handleAccountAdded = () => {
+    close();
+    fetchAccounts();
+  };
+
+  const rows = accounts.map((account, index) => (
+    <Table.Tr key={account.id}>
+      <Table.Td>{index + 1}</Table.Td>
+      <Table.Td>{account.username}</Table.Td>
+      <Table.Td>{account.password}</Table.Td>
+      <Table.Td>{account.role}</Table.Td>
       <Table.Td>
         <div className={classes.actionContainer}>
           <Button className={classes.editButton}>
@@ -48,12 +46,16 @@ export default function Account() {
       </Table.Td>
     </Table.Tr>
   ));
+
   return (
     <>
+    <Modal opened={opened} onClose={close} title="Add Account">
+        <AddAccount onAccountAdded={handleAccountAdded}/>
+      </Modal>
       <div className={classes.titleContainer}>
         <h2>Account</h2>
         <Button
-          onClick={() => router.push("/admin/account/add")}
+          onClick={open}
           className={classes.addButton}
         >
           <IconPlus stroke={2} />
@@ -85,6 +87,27 @@ export default function Account() {
   );
 }
 
+export async function getServerSideProps() {
+  const prisma = new PrismaClient();
+  const accounts = await prisma.account.findMany({
+    select: {
+      id: true,
+      username: true,
+      password: true,
+      role: true,
+    },
+  });
+  const serializedAccounts = JSON.parse(JSON.stringify(accounts));
+  await prisma.$disconnect();
+return {
+  props: {
+    accounts: serializedAccounts,
+  },
+};
+}
+
 Account.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
+
+export default Account;

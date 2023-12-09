@@ -4,19 +4,18 @@ const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { imageUrl, name, detail, price } = req.body;
+    const { name, password, role } = req.body;
     try {
-      const product = await prisma.product.create({
+      const account = await prisma.account.create({
         data: {
-          product_image: imageUrl,
-          product_name: name,
-          product_detail: detail,
-          product_price: price,
+          username: name,
+            password: password,
+            role: role,
         },
       });
-      res.status(201).json(product);
+      res.status(201).json(account);
     } catch (error) {
-      res.status(500).json({ error: 'Unable to create product' });
+      res.status(500).json({ error: 'Unable to create account' });
     }
   } else {
     res.setHeader('Allow', ['POST']);
