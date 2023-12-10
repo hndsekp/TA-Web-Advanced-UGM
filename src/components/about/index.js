@@ -13,7 +13,7 @@ export function About() {
             wanted to create a name for the this project.
           </Text>
         </div>
-        <Image src={image.src} className={classes.image} />
+        <Image src={image.src} className={classes.image} alt="Profile" />
       </div>
     </Container>
   );

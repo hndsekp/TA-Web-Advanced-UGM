@@ -15,8 +15,8 @@ const data = [
 
 export function Navbar() {
   const router = useRouter();
-  const link = data.map((item) => (
-    <Link className={classes.link}
+  const link = data.map((item, index) => (
+    <Link key={index} className={classes.link}
     href={item.link}>{item.label}</Link>))
   return (
     <Box>
