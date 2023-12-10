@@ -55,3 +55,17 @@
   font-size: 14px;
   color: #6c757d; /* Ganti dengan warna yang diinginkan */
 }
+
+@media (max-width: 600px) {
+  .cardContainer {
+    max-width: 100%; /* Full width on smaller screens */
+  }
+  
+  .card {
+    padding: 1rem; /* Add padding to the card on smaller screens */
+  }
+  
+  .contentContainer {
+    padding: 1rem; /* Add padding to the content container on smaller screens */
+  }
+}

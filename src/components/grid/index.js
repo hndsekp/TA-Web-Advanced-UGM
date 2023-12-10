@@ -4,57 +4,57 @@ import { Image, Paper, Grid } from "@mantine/core";
 const data1 = [
   {
     image: "/assets/flavors/chocolate.png",
-    name: "chocolate",
+    name: "Chocolate",
   },
   {
     image: "/assets/flavors/cookies.png",
-    name: "cookies",
+    name: "Cookies",
   },
   {
     image: "/assets/flavors/vanilla_chocochip.png",
-    name: "oreo",
+    name: "Oreo",
   }
 ];
 
 const data2 = [
   {
     image: "/assets/flavors/durian.png",
-    name: "durian"
+    name: "Durian"
   },
   {
     image: "/assets/flavors/mangga.png",
-    name: "mangga"
+    name: "Mango"
   },
   {
     image: "/assets/flavors/mint.png",
-    name: "mint"
+    name: "Mint"
   },
   {
     image: "/assets/flavors/taro.png",
-    name: "taro"
+    name: "Taro"
   }
 ]
 
 const data3 = [
   {
     image: "/assets/flavors/blue_raspberry.png",
-    name: "blue raspberry"
+    name: "Blue Raspberry"
   },
   {
     image: "/assets/flavors/pistacio_almond.png",
-    name: "pistacio almond"
+    name: "Pistacio Almond"
   },
   {
     image: "/assets/flavors/stroberi.png",
-    name: "stroberi"
+    name: "Strawberry"
   },
   {
     image: "/assets/flavors/bubble_gum.png",
-    name: "bubble gum"
+    name: "Bubble Gum"
   },
   {
     image: "/assets/flavors/vanilla.png",
-    name: "vanilla"
+    name: "Vanilla"
   }
 ]
 
