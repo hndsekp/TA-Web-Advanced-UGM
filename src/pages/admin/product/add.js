@@ -7,6 +7,7 @@ import {
   rem,
   Button,
   Group,
+  Image
 } from "@mantine/core";
 import { IconCurrencyDollar } from "@tabler/icons-react";
 import { useState } from "react";
@@ -24,22 +25,22 @@ export default function AddProduct({ onProductAdded }) {
     />
   );
 
-  const [file, setFile] = useState(null);
+  const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [detail, setDetail] = useState("");
   const [price, setPrice] = useState("");
 
 
-  const handleFileChange = (file) => {
-    setFile(file);
+  const handleFileChange = (image) => {
+    setImage(image);
   };
   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const storage = getStorage(app);
-    const storageRef = ref(storage, `images/${file.name}`);
-    const snapshot = await uploadBytes(storageRef, file);
+    const storageRef = ref(storage, `images/${image.name}`);
+    const snapshot = await uploadBytes(storageRef, image);
     const downloadUrl = await getDownloadURL(snapshot.ref);
 
     const response = await fetch('/api/products/add', {
@@ -67,14 +68,13 @@ export default function AddProduct({ onProductAdded }) {
     <>
       <form onSubmit={handleSubmit}>
         <Box maw={360} mx="auto" p="md">
-          <Box maw={340}>
             <FileInput
               accept="image/*"
               id="productImageInput"
               label="Product Image"
               placeholder="Click to input image"
               multiple={false}
-              files={file}
+              files={image}
               onChange={handleFileChange}
             />
             <TextInput
@@ -104,7 +104,6 @@ export default function AddProduct({ onProductAdded }) {
               value={price}
               onChange={(value) => setPrice(value)}
             />
-          </Box>
           <Group justify="flex-end" mt="md">
             <Button mt="xl" variant="filled" type="submit">
               Input Product

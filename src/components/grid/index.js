@@ -64,16 +64,16 @@ function Card({ image, name }) {
       <Paper shadow="xl" p="sm" radius="md" className={classes.card}>
         <Image src={image} alt="Flavor" className={classes.image} />
       </Paper>
-      <h2 className={classes.name}>{name}</h2>
+      <p className={classes.name}>{name}</p>
     </div>
   );
 }
 
-export default function Rasa() {
+export function FlavorList() {
   return (
     <div>
-       <h2 className={classes.teks}>Varian Rasa</h2>
-      <Grid justify="center" align="center">
+       <h5 className={classes.text}>Flavor Variant</h5>
+        <Grid justify="center" align="center">
         {data1.map((item, index) => (
           <Grid.Col
             key={index}

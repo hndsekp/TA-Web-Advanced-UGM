@@ -4,17 +4,23 @@ import { useEffect, useState } from "react";
 import { Button, ScrollArea, Table, Modal } from "@mantine/core";
 import { DashboardLayout } from "@/layouts/dashboard";
 import { IconPlus, IconEdit, IconTrash } from "@tabler/icons-react";
-import { useDisclosure } from "@mantine/hooks";
-import AddAccount from "./add";
 import { PrismaClient } from "@prisma/client";
+import AddAccount from "./add";
+import EditAccount from "./edit/[id]";
+import DeleteAccount from "./delete/[id]";
 
 const Account = () => {
   const [accounts, setAccounts] = useState([]);
   const [scrolled, setScrolled] = useState(false);
-  const [opened, { open, close }] = useDisclosure(false);
+  const [editingAccount, setEditingAccount] = useState(null);
+  const [deletingAccount, setDeletingAccount] = useState(null);
+  const [addModalOpened, setAddModalOpened] = useState(false);
+  const [editModalOpened, setEditModalOpened] = useState(false);
+  const [deleteModalOpenend, setDeleteModalOpened] = useState(false);
 
+  // GET data to display
   const fetchAccounts = async () => {
-    const response = await fetch('/api/accounts');
+    const response = await fetch("/api/accounts");
     const data = await response.json();
     setAccounts(data);
   };
@@ -23,8 +29,36 @@ const Account = () => {
     fetchAccounts();
   }, []);
 
+  // Handle for open modal
+  const handleOpenAddModal = () => {
+    setAddModalOpened(true);
+  };
+
+  const handleOpenEditModal = (accountId) => {
+    const accountToEdit = accounts.find((account) => account.id === accountId);
+    setEditingAccount(accountToEdit);
+    setEditModalOpened(true);
+  };
+
+  const handleOpenDeleteModal = (accountId) => {
+    const accountToDelete = accounts.find((account) => account.id === accountId)
+    setDeletingAccount(accountToDelete);
+    setDeleteModalOpened(true);
+  };
+
+  // Handle after submit data
   const handleAccountAdded = () => {
-    close();
+    setAddModalOpened(false);
+    fetchAccounts();
+  };
+
+  const handleAccountEdited = () => {
+    setEditModalOpened(false);
+    fetchAccounts();
+  };
+
+  const handleAccountDeleted = () => {
+    setDeleteModalOpened(false);
     fetchAccounts();
   };
 
@@ -36,10 +70,17 @@ const Account = () => {
       <Table.Td>{account.role}</Table.Td>
       <Table.Td>
         <div className={classes.actionContainer}>
-          <Button className={classes.editButton}>
+          <Button
+            onClick={() => handleOpenEditModal(account.id)}
+            className={classes.editButton}
+          >
             <IconEdit size={18} />
           </Button>
-          <Button className={classes.deleteButton}>
+
+          <Button
+            onClick={() => handleOpenDeleteModal(account.id)}
+            className={classes.deleteButton}
+          >
             <IconTrash size={18} />
           </Button>
         </div>
@@ -49,15 +90,37 @@ const Account = () => {
 
   return (
     <>
-    <Modal opened={opened} onClose={close} title="Add Account">
-        <AddAccount onAccountAdded={handleAccountAdded}/>
+      <Modal
+        opened={addModalOpened}
+        onClose={() => setAddModalOpened(false)}
+        title="Add Account"
+      >
+        <AddAccount onAccountAdded={handleAccountAdded} />
+      </Modal>
+      <Modal
+        opened={editModalOpened}
+        onClose={() => setEditModalOpened(false)}
+        title="Edit Account"
+      >
+        <EditAccount
+          account={editingAccount}
+          onAccountEdited={handleAccountEdited}
+        />
+      </Modal>
+      <Modal
+        opened={deleteModalOpenend}
+        onClose={() => setDeleteModalOpened(false)}
+        title="Delete Account"
+        size="auto"
+      >
+        <DeleteAccount
+          account={deletingAccount}
+          onAccountDeleted={handleAccountDeleted}
+        />
       </Modal>
       <div className={classes.titleContainer}>
         <h2>Account</h2>
-        <Button
-          onClick={open}
-          className={classes.addButton}
-        >
+        <Button onClick={handleOpenAddModal} className={classes.addButton}>
           <IconPlus stroke={2} />
           Add Account
         </Button>
@@ -85,7 +148,7 @@ const Account = () => {
       </div>
     </>
   );
-}
+};
 
 export async function getServerSideProps() {
   const prisma = new PrismaClient();
@@ -99,11 +162,11 @@ export async function getServerSideProps() {
   });
   const serializedAccounts = JSON.parse(JSON.stringify(accounts));
   await prisma.$disconnect();
-return {
-  props: {
-    accounts: serializedAccounts,
-  },
-};
+  return {
+    props: {
+      accounts: serializedAccounts,
+    },
+  };
 }
 
 Account.getLayout = function getLayout(page) {

@@ -1,20 +1,26 @@
 import classes from "./product.module.css";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button, ScrollArea, Table, Modal } from "@mantine/core";
 import { IconPlus, IconEdit, IconTrash } from "@tabler/icons-react";
 import Image from "next/image";
 import { DashboardLayout } from "@/layouts/dashboard";
-import { useDisclosure } from "@mantine/hooks";
-import AddProduct from "./add";
 import { PrismaClient } from "@prisma/client";
+import AddProduct from "./add";
+import DeleteProduct from "./delete/[id]";
+import EditProduct from "./edit/[id]";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
   const [scrolled, setScrolled] = useState(false);
-  const [opened, { open, close }] = useDisclosure(false);
+  const [editingProduct, setEditingProduct] = useState(null);
+  const [deletingProduct, setDeletingProduct] = useState(null);
+  const [addModalOpened, setAddModalOpened] = useState(false);
+  const [editModalOpened, setEditModalOpened] = useState(false);
+  const [deleteModalOpened, setDeleteModalOpened] = useState(false);
 
+  // GET data to display
   const fetchProducts = async () => {
-    const response = await fetch('/api/products');
+    const response = await fetch("/api/products");
     const data = await response.json();
     setProducts(data);
   };
@@ -23,8 +29,38 @@ const Product = () => {
     fetchProducts();
   }, []);
 
+  // Handle for open modal
+  const handleOpenAddModal = () => {
+    setAddModalOpened(true);
+  };
+
+  const handleOpenEditModal = (productId) => {
+    const productToEdit = products.find((product) => product.id === productId);
+    setEditingProduct(productToEdit);
+    setEditModalOpened(true);
+  };
+
+  const handleOpenDeleteModal = (productId) => {
+    const productToDelete = products.find(
+      (product) => product.id === productId
+    );
+    setDeletingProduct(productToDelete);
+    setDeleteModalOpened(true);
+  };
+
+  // Handle after submit data
   const handleProductAdded = () => {
-    close();
+    setAddModalOpened(false);
+    fetchProducts();
+  };
+
+  const handleProductEdited = () => {
+    setEditModalOpened(false);
+    fetchProducts();
+  };
+
+  const handleProductDeleted = () => {
+    setDeleteModalOpened(false);
     fetchProducts();
   };
 
@@ -48,10 +84,16 @@ const Product = () => {
       </Table.Td>
       <Table.Td>
         <div className={classes.actionContainer}>
-          <Button className={classes.editButton}>
+          <Button
+            onClick={() => handleOpenEditModal(product.id)}
+            className={classes.editButton}
+          >
             <IconEdit size={18} />
           </Button>
-          <Button className={classes.deleteButton}>
+          <Button
+            onClick={() => handleOpenDeleteModal(product.id)}
+            className={classes.deleteButton}
+          >
             <IconTrash size={18} />
           </Button>
         </div>
@@ -61,12 +103,37 @@ const Product = () => {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Add Product">
+      <Modal
+        opened={addModalOpened}
+        onClose={() => setAddModalOpened(false)}
+        title="Add Product"
+      >
         <AddProduct onProductAdded={handleProductAdded} />
+      </Modal>
+      <Modal
+        opened={editModalOpened}
+        onClose={() => setEditModalOpened(false)}
+        title="Edit Product"
+      >
+        <EditProduct
+          product={editingProduct}
+          onProductEdited={handleProductEdited}
+        />
+      </Modal>
+      <Modal
+        opened={deleteModalOpened}
+        onClose={() => setDeleteModalOpened(false)}
+        title="Delete Product"
+        size="auto"
+      >
+        <DeleteProduct
+          product={deletingProduct}
+          onProductDeleted={handleProductDeleted}
+        />
       </Modal>
       <div className={classes.titleContainer}>
         <h2>Product</h2>
-        <Button onClick={open} className={classes.addButton}>
+        <Button onClick={handleOpenAddModal} className={classes.addButton}>
           <IconPlus stroke={2} />
           Add Product
         </Button>
@@ -111,11 +178,11 @@ export async function getServerSideProps() {
   });
   const serializedProducts = JSON.parse(JSON.stringify(products));
   await prisma.$disconnect();
-return {
-  props: {
-    products: serializedProducts,
-  },
-};
+  return {
+    props: {
+      products: serializedProducts,
+    },
+  };
 }
 
 Product.getLayout = function getLayout(page) {

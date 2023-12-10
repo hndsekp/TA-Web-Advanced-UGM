@@ -1,10 +1,9 @@
 .root {
-  height: 75vh;
-  background-color: #11284b;
+  background-color: #95BDFF;
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%),
-    url('/assets/background.jpg');
+  background-image: linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #B4E4FF 70%),
+    url('/assets/hero.jpg');
 }
 
 .inner {
@@ -26,7 +25,6 @@
   padding-top: calc(var(--mantine-spacing-xl) * 2);
   padding-bottom: calc(var(--mantine-spacing-xl) * 2);
   margin-right: calc(var(--mantine-spacing-xl) * 3);
-  margin-top: 75px;
 
   @media (max-width: $mantine-breakpoint-md) {
     margin-right: 0;

@@ -1,7 +1,7 @@
 .cardContainer {
   margin: 10px;
-  width: 1200px; /* Lebar kartu diperbesar */
-  position: relative; /* Menjadikan posisi relatif untuk menentukan posisi absolut tombol */
+  width: 1200px;
+  position: relative;
 }
 
 .card {
@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px; /* Padding diperbesar untuk memberikan lebih banyak ruang di sekitar konten */
+  padding: 20px;
 }
 
 .contentContainer {
@@ -18,9 +18,9 @@
 }
 
 .image {
-  width: 200px; /* Ukuran gambar diperbesar */
-  height: 200px; /* Ukuran gambar diperbesar */
-  margin-right: 20px; /* Margin diperbesar */
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
 }
 
 .textContainer {
@@ -33,7 +33,7 @@
 }
 
 .detail {
-  font-size: 22px; /* Ukuran teks detail diperbesar */
+  font-size: 22px;
 }
 
 .harga {
@@ -45,9 +45,9 @@
 .product {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Memusatkan elemen horizontal */
-  align-items: center; /* Memusatkan elemen vertical */
-  height: 100vh; /* Menetapkan tinggi elemen ke tinggi viewport */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .priceContainer {
@@ -59,7 +59,7 @@
 
 .priceLabel {
   font-weight: 600;
-  font-size: 18px; /* Ukuran teks label harga diperbesar */
+  font-size: 18px;
   color: #6c757d;
 }
 
@@ -67,7 +67,7 @@
   position: absolute;
   bottom: 0px;
   right: 0;
-  margin: 10px; /* Atur margin sesuai keinginan Anda */
+  margin: 10px;
 }
 
 .popup {
@@ -77,9 +77,9 @@
   transform: translate(-50%, -50%);
   background-color: #ffffff;
   border: 1px solid #cccccc;
-  padding: 40px; /* Sesuaikan padding untuk memperbesar popup */
+  padding: 40px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 999; /* Pastikan popup muncul di atas elemen lain */
+  z-index: 999;
   text-align: center;
 }
 
