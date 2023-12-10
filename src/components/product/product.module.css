@@ -58,14 +58,15 @@
 
 @media (max-width: 600px) {
   .cardContainer {
-    max-width: 100%; /* Full width on smaller screens */
+    max-width: 100%;
+    margin: 2rem auto; /* Adjusted margin for smaller screens */
   }
-  
+
   .card {
-    padding: 1rem; /* Add padding to the card on smaller screens */
+    padding: 1rem;
   }
-  
+
   .contentContainer {
-    padding: 1rem; /* Add padding to the content container on smaller screens */
+    padding: 1rem;
   }
 }
