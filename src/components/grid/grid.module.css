@@ -15,11 +15,11 @@
 
   @media (max-width: 768px) {
     height: 180px;
-    width: 120px;
+    width: 180px;
   }
 
   @media (max-width: 425px) {
-    height: 130px;
+    height: 70px;
     width: 70px;
   }
 }
