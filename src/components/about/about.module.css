@@ -43,7 +43,7 @@
   }
 
   @media (max-width: $mantine-breakpoint-xs) {
-    max-width: 100%; /* On extra-small screens, make the image take 100% of the container */
+    max-width: rem(200px); /* On extra-small screens, make the image take 100% of the container */
   }
 }
 
