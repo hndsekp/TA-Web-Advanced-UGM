@@ -5,7 +5,7 @@
 }
 
 .card {
-  border-radius: 50%; /* Changed border-radius to create a circle */
+  border-radius: 100%; /* Changed border-radius to create a circle */
   overflow: hidden;
   display: flex;
   align-items: center;
