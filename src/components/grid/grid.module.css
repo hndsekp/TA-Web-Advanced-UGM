@@ -14,13 +14,13 @@
   padding: 10px;
 
   @media (max-width: 768px) {
-    height: 180px;
-    width: 180px;
+    height: 120px;
+    width: 120px;
   }
 
   @media (max-width: 425px) {
-    height: 70px;
-    width: 70px;
+    height: 100px;
+    width: 100px;
   }
 }
 
