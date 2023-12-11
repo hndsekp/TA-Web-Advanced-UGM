@@ -4,6 +4,11 @@
     padding-right: var(--mantine-spacing-md);
     border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
   }
+
+  .logoContainer {
+    display: flex;
+    align-items: center;
+  }
   
   .link {
     display: flex;
@@ -17,11 +22,30 @@
     font-size: var(--mantine-font-size-sm);
   
     @media (max-width: $mantine-breakpoint-sm) {
+      display: block;
       height: rem(42px);
       width: 100%;
+      text-align: center;
     }
   
-    @mixin hover {
-      background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+    .navLinks {
+      @media (max-width: $mantine-breakpoint-sm) {
+        display: none;
+      }
     }
+    
+    .buttonGroup {
+      display: flex;
+    
+      @media (max-width: $mantine-breakpoint-sm) {
+        justify-content: flex-end;
+        width: 100%;
+      }
+    }
+    
+    .buttonGroup > * {
+      margin-left: var(--mantine-spacing-md);
+    }
+    
+    
   }
