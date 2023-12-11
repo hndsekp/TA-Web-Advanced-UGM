@@ -71,7 +71,7 @@ function Card({ image, name }) {
 
 export function FlavorList() {
   return (
-    <div>
+    <div id="flavor">
        <h5 className={classes.text}>Flavor Variant</h5>
         <Grid justify="center" align="center">
         {data1.map((item, index) => (

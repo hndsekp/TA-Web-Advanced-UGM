@@ -4,17 +4,19 @@ import classes from "./about.module.css";
 
 export function About() {
   return (
-    <Container className={classes.container} size="md">
-      <div className={classes.inner}>
-        <div className={classes.content}>
-          <Title className={classes.title}>Get to Know Us</Title>
-          <Text c="dimmed" mt="md">
-            The name Lolycones was a joke made by Aditya and Ranu when they
-            wanted to create a name for the this project.
-          </Text>
+    <div id="about">
+      <Container className={classes.container} size="md">
+        <div className={classes.inner}>
+          <div className={classes.content}>
+            <Title className={classes.title}>Get to Know Us</Title>
+            <Text c="dimmed" mt="md">
+              The name Lolycones was a joke made by Aditya and Ranu when they
+              wanted to create a name for the this project.
+            </Text>
+          </div>
+          <Image src={image.src} className={classes.image} alt="Profile" />
         </div>
-        <Image src={image.src} className={classes.image} alt="Profile" />
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 }

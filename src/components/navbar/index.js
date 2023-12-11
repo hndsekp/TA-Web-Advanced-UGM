@@ -9,8 +9,8 @@ import Link from "next/link";
 const data = [
   {link: "/", label:"Home"},
   {link: "/product", label:"Products"},
-  {link: "/", label:"Flavors"},
-  {link: "/", label:"About Us"},
+  {link: "#flavor", label:"Flavors"},
+  {link: "#about", label:"About Us"},
 ]
 
 export function Navbar() {
