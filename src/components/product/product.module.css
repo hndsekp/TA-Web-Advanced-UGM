@@ -63,10 +63,10 @@
   }
 
   .card {
-    padding: 7rem; /* Further reduced padding for smaller screens */
+    padding: 7.5rem; /* Further reduced padding for smaller screens */
   }
 
   .contentContainer {
-    padding: 7rem; /* Further reduced padding for smaller screens */
+    padding: 7.5rem; /* Further reduced padding for smaller screens */
   }
 }
