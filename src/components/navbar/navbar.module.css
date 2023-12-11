@@ -16,6 +16,17 @@
     align-items: center;
   }
   
+  .content {
+    padding-top: calc(var(--mantine-spacing-xl) * 2);
+    padding-bottom: calc(var(--mantine-spacing-xl) * 2);
+    margin-right: calc(var(--mantine-spacing-xl) * 3);
+    margin-top: 75px;
+  
+    @media (max-width: $mantine-breakpoint-md) {
+      margin-right: 0;
+    }
+  } 
+
   .link {
     display: flex;
     align-items: center;
