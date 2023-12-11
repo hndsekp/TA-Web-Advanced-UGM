@@ -5,13 +5,13 @@
 }
 
 .card {
-  border-radius: 12px; /* Adjusted border-radius for a rounded rectangle shape */
+  border-radius: 50%; /* Changed border-radius to create a circle */
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; /* Stack image and name vertically */
-  padding: 10px; /* Added padding for internal spacing */
+  flex-direction: column;
+  padding: 10px;
 
   @media (max-width: 768px) {
     height: 180px;
@@ -28,7 +28,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px; /* Adjusted border-radius for consistency */
+  border-radius: 50%;
 }
 
 .name {
@@ -57,7 +57,7 @@
 
 @media (max-width: 600px) {
   .cardContainer {
-    margin: 5px; /* Adjusted margin for smaller screens */
+    margin: 5px;
   }
 
   .text {
